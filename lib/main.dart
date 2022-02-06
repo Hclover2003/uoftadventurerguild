@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       initialData: null,
       value: AuthService().user,
       child: MaterialApp(
+        theme: ThemeData(fontFamily: "Open Sans"),
         home: Wrapper(),
       ),
     );

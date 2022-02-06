@@ -6,7 +6,7 @@ class AppUser {
 }
 
 class UserData {
-  final DateTime createdAt;
+  final Timestamp createdAt;
   final String name;
   final List<String> majors;
   final List<String> currentcourses;

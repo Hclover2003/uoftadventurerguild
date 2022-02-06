@@ -8,7 +8,7 @@ class DatabaseService {
 
   //collection references
   final CollectionReference<Map<String, dynamic>> questCollection =
-      FirebaseFirestore.instance.collection('quests');
+      FirebaseFirestore.instance.collection('postdata');
 
   final CollectionReference<Map<String, dynamic>> userdataCollection =
       FirebaseFirestore.instance.collection('userdata');
@@ -27,7 +27,8 @@ class DatabaseService {
           title: doc["title"],
           creatoruid: doc["creatoruid"],
           capacity: doc["capacity"],
-          age: doc["age"],
+          grade: doc["grade"],
+          location: doc["location"],
           gender: doc["gender"],
           virtual: doc["virtual"],
           description: doc["description"],
@@ -43,9 +44,10 @@ class DatabaseService {
       "title": quest.title,
       "creatoruid": quest.creatoruid,
       "capacity": quest.capacity,
-      "age": quest.age,
+      "grade": quest.grade,
       "gender": quest.gender,
       "virtual": quest.virtual,
+      "location": quest.location,
       "description": quest.description,
       "tags": quest.tags
     });
@@ -63,7 +65,7 @@ class DatabaseService {
   //update user document details
   Future<void> createUserData(UserData userData) async {
     return await userdataCollection.doc(uid).set({
-      "createdAt": DateTime.now(),
+      "createdAt": Timestamp.now(),
       "uid": uid,
       "name": userData.name,
       "majors": userData.majors,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:uoftadventurerguild/constants.dart';
 import 'package:uoftadventurerguild/screens/home.dart';
 import 'package:uoftadventurerguild/screens/join.dart';
 import 'package:uoftadventurerguild/screens/post.dart';
+import 'package:uoftadventurerguild/screens/upperdrawer.dart';
 
 class AppPage extends StatefulWidget {
   @override
@@ -18,38 +20,40 @@ class _AppPageState extends State<AppPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        extendBodyBehindAppBar: true,
+        backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Colors.transparent,
           elevation: 0,
         ),
+        drawer: UpperDrawer(),
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
-            canvasColor: Theme.of(context).colorScheme.secondary,
-            primaryColor: Theme.of(context).backgroundColor,
+            canvasColor: Color(0xFFE9DADA),
+            primaryColor: c2,
           ),
           child: BottomNavigationBar(
-            selectedItemColor: Theme.of(context).primaryColor,
+            selectedItemColor: c3,
             items: const [
               BottomNavigationBarItem(
                   icon: Icon(
                     FontAwesomeIcons.home,
                     size: 20,
                   ),
-                  label: 'home'),
+                  label: 'my events'),
               BottomNavigationBarItem(
                   icon: Icon(
-                    FontAwesomeIcons.utensils,
+                    FontAwesomeIcons.search,
                     size: 20,
                   ),
-                  label: 'food'),
+                  label: 'explore'),
               BottomNavigationBarItem(
                   icon: Icon(
                     FontAwesomeIcons.dumbbell,
                     size: 20,
                   ),
-                  label: 'exercise'),
+                  label: 'create'),
             ],
             currentIndex: i,
             type: BottomNavigationBarType.fixed,
